@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+
+  app:
+    build: .
+    entrypoint: ./.docker/entrypoint.sh
+    container_name: micro-api-app
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/home/node/app
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.5.1
+    container_name: micro-api-elasticsearch
+    environment:
+      - discovery.type=single-node
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    volumes:
+      - ./.docker/dbdata:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.5.1
+    container_name: micro-api-kibana
+    ports:
+      - 5601:5601
+
+  redis:
+    image: redis:alpine
+    container_name: test-nestjs-api-rest-redis
+    volumes:
+      - ./.docker/redisdata:/data

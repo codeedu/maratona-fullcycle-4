@@ -1,0 +1,46 @@
+version: '3'
+
+services:
+
+  app:
+    image: quay.io/keycloak/keycloak:11.0.0
+    container_name: micro-auth-app
+    environment:
+      - KEYCLOAK_USER=admin
+      - KEYCLOAK_PASSWORD=admin
+      - DB_ADDR=db
+      - DB_VENDOR=mysql
+      - DB_DATABASE=test_auth
+      - DB_PORT=3306
+      - DB_USER=root
+      - DB_PASSWORD=root
+      - REGISTER_URL=http://host.docker.internal:3001/register
+    ports:
+      - 8080:8080
+    volumes: 
+      - ./themes/slack:/opt/jboss/keycloak/themes/slack
+
+  db:
+    build: ./.docker/mysql
+    container_name: micro-auth-db
+    restart: always
+    tty: true
+    ports:
+      - "33007:3306"
+    volumes:
+      - ./.docker/dbdata:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=test_auth
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_USER=root
+
+# http://localhost:8080
+# http://host.docker.internal:8080
+
+### Windows      
+# - C:\Windows\system32\drivers\etc\hosts
+
+### Mac e Linux
+# - /etc/hosts
+
+# 127.0.0.1 host.docker.internal
