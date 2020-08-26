@@ -5,6 +5,7 @@ services:
   app:
     image: quay.io/keycloak/keycloak:11.0.0
     container_name: micro-auth-app
+    command: -Dkeycloak.profile.feature.upload_scripts=enabled
     environment:
       - KEYCLOAK_USER=admin
       - KEYCLOAK_PASSWORD=admin
