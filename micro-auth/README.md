@@ -25,7 +25,7 @@ $ docker-compose up
 #### Accesse no browser
 
 ```
-http://host.docker.internal
+http://host.docker.internal:8080
 ```
 
 ### Importe o realm discord
