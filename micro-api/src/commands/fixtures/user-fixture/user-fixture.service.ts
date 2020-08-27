@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { KeycloakUserService } from 'src/services/keycloak-user/keycloak-user.service';
+import { KeycloakUserService } from '../../../services/keycloak-user/keycloak-user.service';
 import { copyFileSync, mkdirSync, existsSync } from 'fs';
 import { join } from 'path';
-import { MEDIA_DIR } from 'src/file';
-import { User } from 'src/models/user.model';
+import { MEDIA_DIR } from '../../../file';
+import { User } from '../../../models/user.model';
 @Injectable()
 export class UserFixtureService {
   constructor(private keyCloakUserService: KeycloakUserService) {}

@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { UserRepository } from 'src/repositories/user/user.repository';
+import { UserRepository } from '../../repositories/user/user.repository';
 import { KeycloakService } from 'nestjs-keycloak-admin';
-import { User } from 'src/models/user.model';
+import { User } from '../../models/user.model';
 import UserRepresentation from 'keycloak-admin/lib/defs/userRepresentation';
 import { UserQuery } from 'keycloak-admin/lib/resources/users';
 

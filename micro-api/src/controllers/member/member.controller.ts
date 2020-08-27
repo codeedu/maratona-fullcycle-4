@@ -1,8 +1,8 @@
 import { Controller, Get, Param, Post, HttpCode, Req, NotFoundException, UnprocessableEntityException, UseInterceptors, ClassSerializerInterceptor } from '@nestjs/common';
-import { User } from 'src/models/user.model';
-import { ServerRepository } from 'src/repositories/server/server.repository';
-import { UserRepository } from 'src/repositories/user/user.repository';
-import { Server } from 'src/models/server.model';
+import { User } from '../../models/user.model';
+import { ServerRepository } from '../../repositories/server/server.repository';
+import { UserRepository } from '../../repositories/user/user.repository';
+import { Server } from '../../models/server.model';
 import { ApiTags, ApiBearerAuth } from '@nestjs/swagger';
 
 @UseInterceptors(ClassSerializerInterceptor)
@@ -46,6 +46,7 @@ export class MemberController {
     if(!server){
         throw new NotFoundException()
     }
+    
     if(this.hasMember(server, params.member_id)){
         throw new UnprocessableEntityException();
     }
@@ -55,6 +56,6 @@ export class MemberController {
   }
 
   private hasMember(server: Server, memberId){
-    return server.members_id.indexOf(memberId)
+    return server.members_id.indexOf(memberId) >= 0
   }
 }

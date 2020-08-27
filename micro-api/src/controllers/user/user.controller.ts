@@ -9,15 +9,15 @@ import {
   Req,
   ClassSerializerInterceptor,
 } from '@nestjs/common';
-import { User } from 'src/models/user.model';
-import { UserRepository } from 'src/repositories/user/user.repository';
-import { UserDto } from 'src/dto/user.dto';
+import { User } from '../../models/user.model';
+import { UserRepository } from '../../repositories/user/user.repository';
+import { UserDto } from '../../dto/user.dto';
 import { Public } from 'nestjs-keycloak-admin';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { imageValidator } from 'src/validators';
+import { imageValidator } from '../../validators';
 import { diskStorage } from 'multer';
-import { hashFilename } from 'src/file';
-import { KeycloakUserService } from 'src/services/keycloak-user/keycloak-user.service';
+import { hashFilename } from '../../file';
+import { KeycloakUserService } from '../../services/keycloak-user/keycloak-user.service';
 import { ApiTags, ApiBearerAuth } from '@nestjs/swagger';
 
 @ApiTags('user')

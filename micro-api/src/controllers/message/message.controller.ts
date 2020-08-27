@@ -1,8 +1,8 @@
 import { Controller, Get, Param, Req } from '@nestjs/common';
-import { MessageRepository } from 'src/repositories/message/message.repository';
-import { Message } from 'src/models/message.model';
+import { MessageRepository } from '../../repositories/message/message.repository';
+import { Message } from '../../models/message.model';
 import { ApiTags, ApiBearerAuth } from '@nestjs/swagger';
-import { ChannelRepository } from 'src/repositories/channel/channel.repository';
+import { ChannelRepository } from '../../repositories/channel/channel.repository';
 
 @ApiTags('message')
 @Controller('channels/:channel_id/messages')

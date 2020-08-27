@@ -1,0 +1,29 @@
+// bootstrap componentes
+// @import "~bootstrap/scss/bootstrap";
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+// dropdown
+@import "~bootstrap/scss/dropdown";
+// collapse
+@import "~bootstrap/scss/transitions";
+// modal
+@import "~bootstrap/scss/modal";
+// forms
+@import "~bootstrap/scss/forms";
+@import "~bootstrap/scss/input-group";
+@import "~bootstrap/scss/button-group";
+@import "~bootstrap/scss/buttons";
+
+// project
+@import "mixins";
+@import "assets";
+@import "variables";
+@import "page";
+@import "login";
+
+html, body, #root{
+    width: 100%;
+    height: 100%;
+}

@@ -7,13 +7,12 @@ import {
   UseInterceptors,
   ClassSerializerInterceptor,
   Req,
-  ForbiddenException,
   NotFoundException,
 } from '@nestjs/common';
-import { CategoryDto } from 'src/dto/category.dto';
-import { CategoryRepository } from 'src/repositories/category/category.repository';
-import { Category } from 'src/models/category.model';
-import { ServerRepository } from 'src/repositories/server/server.repository';
+import { CategoryDto } from '../../dto/category.dto';
+import { CategoryRepository } from '../../repositories/category/category.repository';
+import { Category } from '../../models/category.model';
+import { ServerRepository } from '../../repositories/server/server.repository';
 import { ApiTags, ApiBearerAuth } from '@nestjs/swagger';
 
 @ApiTags('category')

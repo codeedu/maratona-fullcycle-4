@@ -10,13 +10,13 @@ import {
   ClassSerializerInterceptor,
   Req,
 } from '@nestjs/common';
-import { ServerRepository } from 'src/repositories/server/server.repository';
-import { Server } from 'src/models/server.model';
-import { ServerDto } from 'src/dto/server.dto';
-import { imageValidator } from 'src/validators';
+import { ServerRepository } from '../../repositories/server/server.repository';
+import { Server } from '../../models/server.model';
+import { ServerDto } from '../../dto/server.dto';
+import { imageValidator } from '../../validators';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
-import { hashFilename } from 'src/file';
+import { hashFilename } from '../../file';
 import { ApiTags, ApiBearerAuth } from '@nestjs/swagger';
 
 @ApiTags('server')

@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { DefaultCrudRepository } from '@loopback/repository';
-import { Channel } from 'src/models/channel.model';
-import { EsvDataSourceService } from 'src/services/esv-data-source/esv-data-source.service';
+import { Channel } from '../../models/channel.model';
+import { EsvDataSourceService } from '../../services/esv-data-source/esv-data-source.service';
 
 @Injectable()
 export class ChannelRepository extends DefaultCrudRepository<

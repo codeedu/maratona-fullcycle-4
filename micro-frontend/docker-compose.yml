@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+
+  app:
+    build: .
+    container_name: micro-frontend-app
+    entrypoint: ./.docker/entrypoint.sh
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    ports:
+      - 3001:3000
+    volumes:
+      - .:/home/node/app
+    tty: true

@@ -1,5 +1,5 @@
 import {Entity, model, property} from '@loopback/repository';
-import { MEDIA_URL, storagePath } from 'src/file';
+import { MEDIA_URL, storagePath } from '../file';
 import { Exclude, Expose } from 'class-transformer';
 
 @model()

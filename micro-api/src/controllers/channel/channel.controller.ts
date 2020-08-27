@@ -7,13 +7,12 @@ import {
   Post,
   Body,
   Req,
-  ForbiddenException,
   NotFoundException,
 } from '@nestjs/common';
-import { ChannelRepository } from 'src/repositories/channel/channel.repository';
-import { Channel } from 'src/models/channel.model';
-import { ChannelDto } from 'src/dto/channel.dto';
-import { CategoryRepository } from 'src/repositories/category/category.repository';
+import { ChannelRepository } from '../../repositories/channel/channel.repository';
+import { Channel } from '../../models/channel.model';
+import { ChannelDto } from '../../dto/channel.dto';
+import { CategoryRepository } from '../../repositories/category/category.repository';
 import { ApiTags, ApiBearerAuth } from '@nestjs/swagger';
 
 @ApiTags('channel')

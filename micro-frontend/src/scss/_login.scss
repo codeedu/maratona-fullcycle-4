@@ -1,0 +1,105 @@
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  height: auto;
+  padding: 30px 15px 0 15px;
+  background-color: $tertiary;
+
+  @include respond-to($_1200) {
+    padding-top: 100px;
+  }
+
+  .logo {
+    max-width: 138px;
+    margin-bottom: 15px;
+
+    @include respond-to($_1200) {
+      margin-bottom: 40px;
+    }
+  }
+
+  .container-login {
+    padding: 15px;
+    background-color: $secondary;
+
+    @include respond-to($_768) {
+      width: 520px;
+      padding: 40px 80px;
+    }
+
+    h2 {
+      font-size: 1.7em;
+      font-weight: 700;
+      color: $white;
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    p {
+        font-size: 1em;
+        font-weight: 400;
+        color: $white;
+        margin-bottom: 5px;
+      }
+
+    .form-login {
+      width: 100%;
+
+      .form-group {
+        @include respond-to($_1200) {
+          margin-bottom: 30px;
+        }
+      }
+
+      .form-control {
+        height: 60px;
+        border-radius: 5px;
+        background-color: $input;
+        border-color: $input;
+
+        font-size: 1.2em;
+        color: $gray;
+
+        &::placeholder {
+          color: $gray;
+        }
+      }
+
+      .btn-code-slack {
+        width: 100%;
+        height: 60px;
+        border-radius: 5px;
+
+        font-size: 1.5em;
+        font-weight: 600;
+        color: $secondary;
+        text-transform: uppercase;
+        background-color: #fcca50;
+        border-color: #fcca50;
+        margin-top: 20px;
+
+        &:hover,
+        &:focus,
+        &:active {
+          background-color: $secondary;
+          color: #fcca50;
+        }
+      }
+    }
+
+    .form-text {
+      font-size: 1.1em;
+      font-weight: 400;
+      color: $gray;
+      margin-top: 20px;
+
+      a {
+        color: $full-cycle;
+      }
+    }
+  }
+}

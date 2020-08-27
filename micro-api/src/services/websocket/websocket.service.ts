@@ -11,8 +11,8 @@ import { Socket } from 'socket.io';
 import { KeycloakService } from 'nestjs-keycloak-admin';
 import { RedisClient } from '@nestjs/microservices/external/redis.interface';
 import { promisify } from 'util';
-import { ServerRepository } from 'src/repositories/server/server.repository';
-import { MessageRepository } from 'src/repositories/message/message.repository';
+import { ServerRepository } from '../../repositories/server/server.repository';
+import { MessageRepository } from '../../repositories/message/message.repository';
 
 interface RedisGet {
   (value: string): Promise<string>;
@@ -59,7 +59,7 @@ export class WebsocketService implements OnGatewayConnection {
     const user: {
       sub: string;
     } = await this.keycloakService.connect.grantManager.userInfo(token);
-    return user.sub;
+    return user.sub; //uuid do user no keycloak
   }
 
   @SubscribeMessage('join')

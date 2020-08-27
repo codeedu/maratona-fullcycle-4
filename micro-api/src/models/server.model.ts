@@ -1,5 +1,5 @@
 import {Entity, model, property} from '@loopback/repository';
-import { storagePath, MEDIA_URL } from 'src/file';
+import { storagePath, MEDIA_URL } from '../file';
 import {v4 as uuid} from 'uuid';
 import {Exclude, Expose} from 'class-transformer';
 

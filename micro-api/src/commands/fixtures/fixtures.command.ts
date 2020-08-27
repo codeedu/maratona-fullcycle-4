@@ -7,7 +7,7 @@ import fixtures from './json';
 import { DefaultCrudRepository } from '@loopback/repository';
 import chalk from 'chalk';
 import { exec } from 'child_process';
-import { MEDIA_DIR } from 'src/file';
+import { MEDIA_DIR } from '../../file';
 
 @Console()
 export class FixturesCommand {
@@ -28,7 +28,7 @@ export class FixturesCommand {
         await this.processRepository(fixture.model, fixture.fields);
       } else {
         const [serviceClass, method] = fixture.fixture.split('@');
-        this.processService(serviceClass, method, fixture.fields);
+        await this.processService(serviceClass, method, fixture.fields);
       }
     }
 

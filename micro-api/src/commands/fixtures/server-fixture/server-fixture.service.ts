@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
-import { MEDIA_DIR } from 'src/file';
+import { MEDIA_DIR } from '../../../file';
 import { existsSync, mkdirSync, copyFileSync } from 'fs';
 import { join } from 'path';
-import { Server } from 'src/models/server.model';
-import { ServerRepository } from 'src/repositories/server/server.repository';
-import { UserRepository } from 'src/repositories/user/user.repository';
+import { Server } from '../../../models/server.model';
+import { ServerRepository } from '../../../repositories/server/server.repository';
+import { UserRepository } from '../../../repositories/user/user.repository';
 
 @Injectable()
 export class ServerFixtureService {
