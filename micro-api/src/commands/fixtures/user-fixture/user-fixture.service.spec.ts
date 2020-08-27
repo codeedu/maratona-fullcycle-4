@@ -4,7 +4,10 @@ import { KeycloakUserService } from '../../../services/keycloak-user/keycloak-us
 import { UserRepository } from '../../../repositories/user/user.repository';
 import { EsvDataSourceService } from '../../../services/esv-data-source/esv-data-source.service';
 import { ConfigModule } from '@nestjs/config';
-import KeycloakModule from 'nestjs-keycloak-admin';
+import { KeycloakService } from 'nestjs-keycloak-admin';
+import { sleep } from '../../../utils';
+
+jest.mock('nestjs-keycloak-admin');
 
 describe('UserFixtureService', () => {
   let service: UserFixtureService;
@@ -13,27 +16,19 @@ describe('UserFixtureService', () => {
     const module: TestingModule = await Test.createTestingModule({
       imports: [
         ConfigModule.forRoot(),
-        KeycloakModule.registerAsync({
-          useFactory: () => {
-            const keycloakConfig = JSON.parse(process.env.KEYCLOAK_JSON);
-            return {
-              baseUrl: keycloakConfig['auth-server-url'],
-              realmName: keycloakConfig['realm'],
-              clientId: keycloakConfig['resource'],
-              clientSecret: keycloakConfig['credentials']['secret'],
-            };
-          },
-        }),
       ],
       providers: [
         EsvDataSourceService,
         UserFixtureService,
         KeycloakUserService,
+        KeycloakService,
         UserRepository,
       ],
     }).compile();
 
     service = module.get<UserFixtureService>(UserFixtureService);
+
+    await sleep(200);
   });
 
   it('should be defined', () => {
