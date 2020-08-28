@@ -33,6 +33,9 @@ export class EsvDataSourceService extends juggler.DataSource {
         id: {
           type: 'keyword',
         },
+        created_at: {
+          type: 'date',
+        },
         owner_id: {
           type: 'keyword',
         },
