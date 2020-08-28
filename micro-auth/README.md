@@ -28,10 +28,6 @@ $ docker-compose up
 http://host.docker.internal:8080
 ```
 
-### Importe o realm discord
+### Importação do realm discord e clients
 
-Na raiz do repositório Git há um arquivo chamado de realm-export.json, importe-o no admin do Keycloak para não precisar criar o realm, nem os clientes.
-
-É necessário regerar/pegar o client_secret gerado no painel administrativo e sobreescrever pelo que está na variável **KEYCLOAK_JSON** no .env da aplicação Nest.js e da aplicação React.js.
-
-Por precaução, após fazer isto, reinicie os containers das aplicações Nest.js e React.js
+No primeiro processo de levantar os containers, já será gerado o realm discord e os clientes nest e react para conectar as outras aplicações.
