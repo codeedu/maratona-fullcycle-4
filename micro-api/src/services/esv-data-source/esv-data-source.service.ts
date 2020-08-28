@@ -48,6 +48,9 @@ export class EsvDataSourceService extends juggler.DataSource {
             },
           },
         },
+        created_at: {
+          type: "date",
+        },
         email: {
           type: 'keyword',
         },
