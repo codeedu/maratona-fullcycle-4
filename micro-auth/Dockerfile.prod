@@ -1,0 +1,5 @@
+FROM quay.io/keycloak/keycloak:11.0.0
+
+COPY ./realm-export.json ./
+COPY ./themes/slack /opt/jboss/keycloak/themes/slack
+CMD ["-Dkeycloak.profile.feature.upload_scripts=enabled"]

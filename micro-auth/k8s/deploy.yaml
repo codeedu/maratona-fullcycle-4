@@ -1,0 +1,80 @@
+apiVersion: v1
+kind: Secret 
+metadata:
+    name: keycloak-secret
+type: Opaque
+data:
+    DB_PASSWORD: MWdRNHhXQ0hYaw==
+    KEYCLOAK_PASSWORD: YWRtaW4=
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: keycloak
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: keycloak
+    template:
+        metadata:
+            labels:
+                app: keycloak
+        spec:
+            containers:
+                - name: keycloak
+                  image: wesleywillians/maratona4-keycloak:latest
+                  ports:
+                    - containerPort: 8080
+                  env:
+                  - name: KEYCLOAK_USER
+                    value: admin
+                    
+                  - name: DB_ADDR
+                    value: mysql.default.svc.cluster.local                  
+
+                  - name: DB_VENDOR
+                    value: mysql
+
+                  - name: DB_DATABASE
+                    value: "keycloak"
+
+                  - name: DB_PORT
+                    value: "3306"                
+
+                  - name: DB_USER
+                    value: "root" 
+
+                  - name: REGISTER_URL
+                    value: "http://codeslack.maratona.fullcycle.com.br/register"                
+                
+                  - name: DB_PASSWORD
+                    valueFrom:
+                        secretKeyRef:
+                            name: keycloak-secret
+                            key: DB_PASSWORD  
+
+                  - name: KEYCLOAK_PASSWORD
+                    valueFrom:
+                        secretKeyRef:
+                            name: keycloak-secret
+                            key: KEYCLOAK_PASSWORD  
+
+                                       
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+    name: keycloak-service
+spec:
+    ports:
+        - port: 8080
+    selector:
+        app: keycloak
+    type: LoadBalancer
+
+---
+    

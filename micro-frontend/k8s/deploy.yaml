@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: spa
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: spa
+    template:
+        metadata:
+            labels:
+                app: spa
+        spec:
+            containers:
+                - name: spa
+                  image: wesleywillians/maratona4-spa:latest
+                  ports:
+                    - containerPort: 3000
+                                        
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+    name: spa-service
+spec:
+    ports:
+        - port: 3000
+    selector:
+        app: spa
+    type: LoadBalancer
+
+---
+    
